@@ -46,7 +46,13 @@ namespace StregSystem
 
         public override bool Equals(object obj)
         {
-            return this.Id == (User)obj.Id;
+            User p = obj as User;
+            return this.Id == p.Id;
+        }
+
+        public override int GetHashCode()
+        {
+            return this.Id.GetHashCode();
         }
     }
 }
