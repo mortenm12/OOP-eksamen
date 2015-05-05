@@ -16,17 +16,43 @@ namespace StregSystem
         /// <summary>
         /// The FirstName of the User.
         /// </summary>
-        public string FirstName { get; private set; }
+        public string FirstName
+        {
+            get;
+            private set
+            {
+                if (value == null)
+                    throw new ArgumentNullException("You Can't set Firstname to NULL");
+            }
+        }
+
 
         /// <summary>
         /// The LastName of the User.
         /// </summary>
-        public string LastName { get; private set; }
+        public string LastName
+        {
+            get;
+            private set
+            {
+                if (value == null)
+                    throw new ArgumentNullException("You Can't set Firstname to NULL");
+            }
+        }
 
         /// <summary>
         /// The UserName of the User.
         /// </summary>
-        public string UserName { get; private set; }
+        public string UserName 
+        { 
+            get; 
+            private set 
+            { 
+            foreach(char element in value)
+                if((element < 'a' && element > 'z' )|| (element >'0' && element < '9' )|| element =='_')
+                    
+            }
+        }
 
         /// <summary>
         /// The Email adress og the User.
@@ -46,13 +72,22 @@ namespace StregSystem
 
         public override bool Equals(object obj)
         {
-            User p = obj as User;
-            return this.Id == p.Id;
+            User other = obj as User;
+            return this.Id == other.Id;
         }
 
         public override int GetHashCode()
         {
             return this.Id.GetHashCode();
+        }
+
+        public int CompareTo(User other)
+        {
+            if (this.Id > other.Id)
+                return 1;
+            else if (this.Id < other.Id)
+                return -1;
+            else return 0;
         }
     }
 }
