@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace StregSystem
 {
@@ -36,7 +37,7 @@ namespace StregSystem
             private set
             {
                 if (value == null)
-                    throw new ArgumentNullException("You Can't set Firstname to NULL");
+                    throw new ArgumentNullException("You Can't set Lastname to NULL");
             }
         }
 
@@ -46,18 +47,39 @@ namespace StregSystem
         public string UserName 
         { 
             get; 
-            private set 
-            { 
-            foreach(char element in value)
-                if((element < 'a' && element > 'z' )|| (element >'0' && element < '9' )|| element =='_')
-                    
+            private set
+            {
+                Regex UserNameCheck = new Regex(@"[a-z0-9_]$");
+                if (UserNameCheck.IsMatch(value))
+                {
+                    UserName = value;
+                }
+                {
+                    //smid en fejl
+                }
+
             }
         }
 
         /// <summary>
-        /// The Email adress og the User.
+        /// The Email adress of the User.
         /// </summary>
-        public string Email { get; set; }
+        public string Email 
+        { 
+            get;
+            set
+            { 
+                Regex EmailCheck = new Regex(@"[a-zA-Z0-9.-_]@[a-zA-Z0-9][a-zA-Z0-9.-][a-zA-Z0-9].[a-zA-Z0-9]$");
+                if(EmailCheck.IsMatch(value))
+                {
+                    Email = value;
+                }
+                else
+                {
+                    //smid en fejl
+                }
+            } 
+        }
 
         /// <summary>
         /// The money balance of the User.
