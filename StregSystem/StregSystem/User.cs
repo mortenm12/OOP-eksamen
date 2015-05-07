@@ -13,7 +13,7 @@ namespace StregSystem
         /// <summary>
         /// The ID number of the User.
         /// </summary>
-        public readonly long Id;
+        public readonly uint Id;
 
         /// <summary>
         /// The FirstName of the User.
@@ -25,6 +25,8 @@ namespace StregSystem
             {
                 if (value == null)
                     throw new ArgumentNullException("You Can't set Firstname to NULL");
+                else
+                    FirstName = value;
             }
         }
 
@@ -39,6 +41,8 @@ namespace StregSystem
             {
                 if (value == null)
                     throw new ArgumentNullException("You Can't set Lastname to NULL");
+                else
+                    LastName = value;
             }
         }
 
@@ -130,12 +134,12 @@ namespace StregSystem
             else return 0;
         }
 
-        public User(long id)
+        public User(uint id)
         {
             this.Id = id;
         }
 
-        public User(long id, string firstName, string lastName, string userName)
+        public User(uint id, string firstName, string lastName, string userName)
         {
             this.Id = id;
             this.FirstName = firstName;

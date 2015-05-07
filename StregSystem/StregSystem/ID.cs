@@ -8,7 +8,10 @@ namespace StregSystem
 {
     static class ID
     {
-        public long NextUserId 
+        /// <summary>
+        /// Return the next User Id.
+        /// </summary>
+        public uint NextUserId 
         {
             get
             {
@@ -16,7 +19,11 @@ namespace StregSystem
             }
             private set; 
         }
-        public long NextProductId {
+
+        /// <summary>
+        /// Return the next Product Id.
+        /// </summary>
+        public uint NextProductId {
             get
             {
                 return NextProductId++;
@@ -24,5 +31,16 @@ namespace StregSystem
             private set;
         }
 
+        /// <summary>
+        /// Return the next Transaction Id.
+        /// </summary>
+        public uint NextTransactionId
+        {
+            get
+            {
+                return NextTransactionId++;
+            }
+            private set;
+        }
     }
 }
