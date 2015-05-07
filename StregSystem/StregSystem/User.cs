@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
+
 namespace StregSystem
 {
     class User : IComparable
@@ -49,7 +50,7 @@ namespace StregSystem
             get; 
             private set
             {
-                Regex UserNameCheck = new Regex(@"[a-z0-9_]$");
+                Regex UserNameCheck = new Regex(@"[a-z0-9_]$"); //Jeg har brugt MSDN til at forstå og bruge regular expression
                 if (UserNameCheck.IsMatch(value))
                 {
                     UserName = value;
@@ -68,8 +69,8 @@ namespace StregSystem
         { 
             get;
             set
-            { 
-                Regex EmailCheck = new Regex(@"[a-zA-Z0-9.-_]@[a-zA-Z0-9][a-zA-Z0-9.-][a-zA-Z0-9].[a-zA-Z0-9]$");
+            {
+                Regex EmailCheck = new Regex(@"[a-zA-Z0-9.-_]@[a-zA-Z0-9][a-zA-Z0-9.-][a-zA-Z0-9].[a-zA-Z0-9]$"); 
                 if(EmailCheck.IsMatch(value))
                 {
                     Email = value;
@@ -86,23 +87,40 @@ namespace StregSystem
         /// </summary>
         public int Balance { get; set; }
 
-
+        /// <summary>
+        /// ToString returns FullName and Email adress.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return FirstName + " " + LastName + " " + Email;
         }
 
+        /// <summary>
+        /// Equals compares two Users on theis ID.
+        /// </summary>
+        /// <param name="obj">THe object which one is compared to.</param>
+        /// <returns></returns>
         public override bool Equals(object obj)
         {
             User other = obj as User;
             return this.Id == other.Id;
         }
 
+        /// <summary>
+        /// HashCode returns the hashcode on the Users ID.
+        /// </summary>
+        /// <returns></returns>
         public override int GetHashCode()
         {
             return this.Id.GetHashCode();
         }
 
+        /// <summary>
+        /// Compares two user, on theirs ID, which is by the date they get into the system.
+        /// </summary>
+        /// <param name="other"></param>
+        /// <returns></returns>
         public int CompareTo(User other)
         {
             if (this.Id > other.Id)
@@ -110,6 +128,19 @@ namespace StregSystem
             else if (this.Id < other.Id)
                 return -1;
             else return 0;
+        }
+
+        public User(long id)
+        {
+            this.Id = id;
+        }
+
+        public User(long id, string firstName, string lastName, string userName)
+        {
+            this.Id = id;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.UserName = userName;
         }
     }
 }
