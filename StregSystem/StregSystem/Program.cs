@@ -10,6 +10,8 @@ namespace StregSystem
     {
         static void Main(string[] args)
         {
+
+            
         }
     }
 }

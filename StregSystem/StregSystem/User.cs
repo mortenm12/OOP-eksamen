@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Text.RegularExpressions;
-
 
 namespace StregSystem
 {
@@ -13,7 +11,7 @@ namespace StregSystem
         /// <summary>
         /// The ID number of the User.
         /// </summary>
-        public readonly uint Id;
+        public readonly long Id;
 
         /// <summary>
         /// The FirstName of the User.
@@ -25,8 +23,6 @@ namespace StregSystem
             {
                 if (value == null)
                     throw new ArgumentNullException("You Can't set Firstname to NULL");
-                else
-                    FirstName = value;
             }
         }
 
@@ -40,9 +36,7 @@ namespace StregSystem
             private set
             {
                 if (value == null)
-                    throw new ArgumentNullException("You Can't set Lastname to NULL");
-                else
-                    LastName = value;
+                    throw new ArgumentNullException("You Can't set Firstname to NULL");
             }
         }
 
@@ -52,79 +46,41 @@ namespace StregSystem
         public string UserName 
         { 
             get; 
-            private set
-            {
-                Regex UserNameCheck = new Regex(@"[a-z0-9_]$"); //Jeg har brugt MSDN til at forstå og bruge regular expression
-                if (UserNameCheck.IsMatch(value))
-                {
-                    UserName = value;
-                }
-                {
-                    //smid en fejl
-                }
-
+            private set 
+            { 
+            foreach(char element in value)
+                if(!((element < 'a' && element > 'z' )|| (element >'0' && element < '9' )|| element =='_'))
+                    throw new ArgumentException("")
             }
         }
 
         /// <summary>
-        /// The Email adress of the User.
+        /// The Email adress og the User.
         /// </summary>
-        public string Email 
-        { 
-            get;
-            set
-            {
-                Regex EmailCheck = new Regex(@"[a-zA-Z0-9.-_]@[a-zA-Z0-9][a-zA-Z0-9.-][a-zA-Z0-9].[a-zA-Z0-9]$"); 
-                if(EmailCheck.IsMatch(value))
-                {
-                    Email = value;
-                }
-                else
-                {
-                    //smid en fejl
-                }
-            } 
-        }
+        public string Email { get; set; }
 
         /// <summary>
         /// The money balance of the User.
         /// </summary>
         public int Balance { get; set; }
 
-        /// <summary>
-        /// ToString returns FullName and Email adress.
-        /// </summary>
-        /// <returns></returns>
+
         public override string ToString()
         {
             return FirstName + " " + LastName + " " + Email;
         }
 
-        /// <summary>
-        /// Equals compares two Users on theis ID.
-        /// </summary>
-        /// <param name="obj">THe object which one is compared to.</param>
-        /// <returns></returns>
         public override bool Equals(object obj)
         {
             User other = obj as User;
             return this.Id == other.Id;
         }
 
-        /// <summary>
-        /// HashCode returns the hashcode on the Users ID.
-        /// </summary>
-        /// <returns></returns>
         public override int GetHashCode()
         {
             return this.Id.GetHashCode();
         }
 
-        /// <summary>
-        /// Compares two user, on theirs ID, which is by the date they get into the system.
-        /// </summary>
-        /// <param name="other"></param>
-        /// <returns></returns>
         public int CompareTo(User other)
         {
             if (this.Id > other.Id)
@@ -132,19 +88,6 @@ namespace StregSystem
             else if (this.Id < other.Id)
                 return -1;
             else return 0;
-        }
-
-        public User(uint id)
-        {
-            this.Id = id;
-        }
-
-        public User(uint id, string firstName, string lastName, string userName)
-        {
-            this.Id = id;
-            this.FirstName = firstName;
-            this.LastName = lastName;
-            this.UserName = userName;
         }
     }
 }
