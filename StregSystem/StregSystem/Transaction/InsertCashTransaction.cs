@@ -18,5 +18,11 @@ namespace StregSystem.Transaction
         {
             TheUser.Balance += Amount;
         }
+
+        public InsertCashTransaction()
+        {
+            TransactionId = ID.NextTransactionId;
+            Date = DateTime.Now;
+        }
     }
 }

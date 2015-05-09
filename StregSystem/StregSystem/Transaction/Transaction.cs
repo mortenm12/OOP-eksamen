@@ -8,11 +8,14 @@ namespace StregSystem.Transaction
 {
     class Transaction
     {
-        public readonly uint TransactionId;
+        public uint TransactionId;
 
         public User TheUser
         {
-            get;
+            get
+            {
+                return TheUser;
+            }
             set
             {
                 if (value == null)
@@ -23,8 +26,11 @@ namespace StregSystem.Transaction
         }
 
         public DateTime Date 
-        { 
-            get;
+        {
+            get
+            {
+                return Date;
+            }
             set 
             {
                 if (value == null)
@@ -36,16 +42,20 @@ namespace StregSystem.Transaction
 
         public int Amount { get; set; }
 
-        public virtual void Execute();
+        public virtual void Execute()
+        {
+
+        }
 
         public override string ToString()
         {
             return TransactionId + " " + Amount + " " + Date;
         }
 
-        public Transaction(uint Id)
+        public Transaction()
         {
-            TransactionId = Id;
+            TransactionId = ID.NextTransactionId;
+            Date = DateTime.Now;
         }
     }
 }

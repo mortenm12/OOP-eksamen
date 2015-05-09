@@ -30,7 +30,10 @@ namespace StregSystem.Products
                 else
                     return false;
             }
-            set;
+            set
+            {
+                Active = value;
+            }
         }
     }
 }

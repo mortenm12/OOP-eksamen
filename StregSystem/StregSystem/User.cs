@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace StregSystem
 {
-    class User : IComparable
+    class User //: IComparable
     {
         /// <summary>
         /// The ID number of the User.
@@ -19,8 +19,11 @@ namespace StregSystem
         /// </summary>
         public string FirstName
         {
-            get;
-            private set
+            get
+            {
+                return FirstName;
+            }
+            set
             {
                 if (value == null)
                     throw new ArgumentNullException("You Can't set Firstname to NULL");
@@ -33,8 +36,11 @@ namespace StregSystem
         /// </summary>
         public string LastName
         {
-            get;
-            private set
+            get
+            {
+                return LastName;
+            }
+            set
             {
                 if (value == null)
                     throw new ArgumentNullException("You Can't set Firstname to NULL");
@@ -45,9 +51,12 @@ namespace StregSystem
         /// The UserName of the User.
         /// </summary>
         public string UserName 
-        { 
-            get; 
-            private set 
+        {
+            get
+            {
+                return UserName;
+            }
+            set 
             {
                 Regex UserNameCheck = new Regex(@"[a-z0-9_]$"); //Jeg har brugt MSDN til at forstå og bruge regular expression
                 if (UserNameCheck.IsMatch(value))
@@ -65,7 +74,10 @@ namespace StregSystem
         /// The Email adress og the User.
         /// </summary>
         public string Email {
-            get;
+            get
+            {
+                return Email;
+            }
             set
             {
                 Regex EmailCheck = new Regex(@"[a-zA-Z0-9.-_]@[a-zA-Z0-9][a-zA-Z0-9.-][a-zA-Z0-9].[a-zA-Z0-9]$");
@@ -110,5 +122,7 @@ namespace StregSystem
                 return -1;
             else return 0;
         }
+
+       
     }
 }

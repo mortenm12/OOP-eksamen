@@ -16,7 +16,7 @@ namespace StregSystem
             User1.Email="mortenm12@hotmail.com";
             User1.FirstName="Morten";
             User1.LastName = "Rasm,ussen";
-            User1.UserName
+            User1.UserName = "mortenm12";
             
             
             

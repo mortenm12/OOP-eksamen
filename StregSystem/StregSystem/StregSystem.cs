@@ -16,9 +16,9 @@ namespace StregSystem
         public void BuyProduct(User TheUser, Product TheProduct)
         {
             
-           BuyTransaction productbuy = new BuyTransaction(ID.NextTransactionId)
+           BuyTransaction productbuy = new BuyTransaction()
             {
-                Date = DateTime.Now,
+                
                 Amount = TheProduct.Price,
                 TheUser = TheUser,
                 TheProduct = TheProduct,

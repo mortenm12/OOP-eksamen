@@ -45,9 +45,10 @@ namespace StregSystem.Transaction
             }
         }
 
-        public BuyTransaction(uint Id)
+        public BuyTransaction()
         {
-            TransactionId = Id;
+            TransactionId = ID.NextTransactionId;
+            Date = DateTime.Now;
         }
     }
 }

@@ -1,2 +1,3 @@
 C:\Users\Morten\Documents\GitHub\OOP-eksamen\StregSystem\StregSystem\bin\Debug\StregSystem.exe.config
 D:\GitHub\OOP-eksamen\StregSystem\StregSystem\bin\Debug\StregSystem.exe.config
+D:\GitHub\OOP-eksamen\StregSystem\StregSystem\obj\Debug\StregSystem.csprojResolveAssemblyReference.cache

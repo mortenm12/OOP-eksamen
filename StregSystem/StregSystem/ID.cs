@@ -17,7 +17,10 @@ namespace StregSystem
             {
                 return NextUserId++;
             }
-            set; 
+            set
+            {
+                NextUserId = value;
+            }
         }
 
         /// <summary>
@@ -28,7 +31,10 @@ namespace StregSystem
             {
                 return NextProductId++;
             }
-            set;
+            set
+            {
+                NextProductId = value;
+            }
         }
 
         /// <summary>
@@ -40,7 +46,10 @@ namespace StregSystem
             {
                 return NextTransactionId++;
             }
-            set;
+            set
+            {
+                NextTransactionId = value;
+            }
         }
     }
 }

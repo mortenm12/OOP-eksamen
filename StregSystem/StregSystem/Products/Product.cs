@@ -17,8 +17,11 @@ namespace StregSystem.Products
         /// The Name on the Product.
         /// </summary>
         public string Name 
-        { 
-            get;
+        {
+            get
+            {
+                return Name;
+            }
             set
             {
                 if (value == null)
@@ -36,7 +39,7 @@ namespace StregSystem.Products
         /// <summary>
         /// Active indecates that a pruduct is buyable at the time.
         /// </summary>
-        public abstract bool Active { get; set; }
+        public virtual bool Active { get; set; }
 
         /// <summary>
         /// Indicates that a product can be bought even if the User don't have enough money.
