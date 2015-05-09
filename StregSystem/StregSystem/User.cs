@@ -12,7 +12,7 @@ namespace StregSystem
         /// <summary>
         /// The ID number of the User.
         /// </summary>
-        public readonly long Id;
+        public long Id{get;set;}
 
         /// <summary>
         /// The FirstName of the User.
@@ -121,6 +121,10 @@ namespace StregSystem
             else if (this.Id < other.Id)
                 return -1;
             else return 0;
+        }
+        public User()
+        {
+            Id = ID.NextUserId;
         }
 
        

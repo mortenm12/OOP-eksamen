@@ -52,10 +52,6 @@ namespace StregSystem.Transaction
             return TransactionId + " " + Amount + " " + Date;
         }
 
-        public Transaction()
-        {
-            TransactionId = ID.NextTransactionId;
-            Date = DateTime.Now;
-        }
+        
     }
 }

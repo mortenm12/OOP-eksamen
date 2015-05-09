@@ -45,5 +45,15 @@ namespace StregSystem.Products
         /// Indicates that a product can be bought even if the User don't have enough money.
         /// </summary>
         public bool CanBeBoughtOnCredit { get; set; }
+
+        public Product()
+        {
+
+        }
+
+        public Product(uint id)
+        {
+            ProductID = id;
+        }
     }
 }

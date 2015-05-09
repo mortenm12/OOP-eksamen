@@ -11,11 +11,12 @@ namespace StregSystem
         /// <summary>
         /// Return the next User Id.
         /// </summary>
-        public static uint NextUserId 
+        public static uint NextUserId
         {
             get
             {
-                return NextUserId++;
+                NextUserId++;
+                return NextUserId;
             }
             set
             {
