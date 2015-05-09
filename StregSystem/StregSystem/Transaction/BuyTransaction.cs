@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using StregSystem.Products;
+using StregSystem.Exeptions;
 
-namespace StregSystem
+namespace StregSystem.Transaction
 {
     class BuyTransaction : Transaction
     {
@@ -41,6 +43,11 @@ namespace StregSystem
             {
                 throw new ProductNotActiveExeption(TheUser, TheProduct, "The product isn't active.");
             }
+        }
+
+        public BuyTransaction(uint Id)
+        {
+            TransactionId = Id;
         }
     }
 }

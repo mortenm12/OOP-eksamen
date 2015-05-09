@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StregSystem
+namespace StregSystem.Transaction
 {
     class Transaction
     {
@@ -41,6 +41,11 @@ namespace StregSystem
         public override string ToString()
         {
             return TransactionId + " " + Amount + " " + Date;
+        }
+
+        public Transaction(uint Id)
+        {
+            TransactionId = Id;
         }
     }
 }

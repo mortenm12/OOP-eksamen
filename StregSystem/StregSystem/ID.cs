@@ -11,36 +11,36 @@ namespace StregSystem
         /// <summary>
         /// Return the next User Id.
         /// </summary>
-        public uint NextUserId 
+        public static uint NextUserId 
         {
             get
             {
                 return NextUserId++;
             }
-            private set; 
+            set; 
         }
 
         /// <summary>
         /// Return the next Product Id.
         /// </summary>
-        public uint NextProductId {
+        public static uint NextProductId {
             get
             {
                 return NextProductId++;
             }
-            private set;
+            set;
         }
 
         /// <summary>
         /// Return the next Transaction Id.
         /// </summary>
-        public uint NextTransactionId
+        public static uint NextTransactionId
         {
             get
             {
                 return NextTransactionId++;
             }
-            private set;
+            set;
         }
     }
 }

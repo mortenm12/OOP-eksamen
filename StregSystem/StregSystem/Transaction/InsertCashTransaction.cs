@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StregSystem
+
+namespace StregSystem.Transaction
 {
     class InsertCashTransaction : Transaction
     {
