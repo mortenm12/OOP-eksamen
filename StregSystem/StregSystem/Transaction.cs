@@ -15,9 +15,9 @@ namespace StregSystem
             get;
             set
             {
-                if(value == null)
-                    throw new ArgumentNullException("The User can't be NULL.")
-                else 
+                if (value == null)
+                    throw new ArgumentNullException("The User can't be NULL.");
+                else
                     TheUser = value;
             }
         }
@@ -37,5 +37,10 @@ namespace StregSystem
         public int Amount { get; set; }
 
         public virtual void Execute();
+
+        public override string ToString()
+        {
+            return TransactionId + " " + Amount + " " + Date;
+        }
     }
 }
