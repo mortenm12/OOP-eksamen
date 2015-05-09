@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace StregSystem
 {
@@ -47,17 +48,37 @@ namespace StregSystem
         { 
             get; 
             private set 
-            { 
-            foreach(char element in value)
-                if(!((element < 'a' && element > 'z' )|| (element >'0' && element < '9' )|| element =='_'))
-                    throw new ArgumentException("")
+            {
+                Regex UserNameCheck = new Regex(@"[a-z0-9_]$"); //Jeg har brugt MSDN til at forstå og bruge regular expression
+                if (UserNameCheck.IsMatch(value))
+                {
+                    UserName = value;
+                }
+                else
+                {
+                    //smid en fejl
+                }
             }
         }
 
         /// <summary>
         /// The Email adress og the User.
         /// </summary>
-        public string Email { get; set; }
+        public string Email {
+            get;
+            set
+            {
+                Regex EmailCheck = new Regex(@"[a-zA-Z0-9.-_]@[a-zA-Z0-9][a-zA-Z0-9.-][a-zA-Z0-9].[a-zA-Z0-9]$");
+                if (EmailCheck.IsMatch(value))
+                {
+                    Email = value;
+                }
+                else
+                {
+                    //smid en fejl
+                }
+            }
+        }
 
         /// <summary>
         /// The money balance of the User.
