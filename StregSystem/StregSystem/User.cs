@@ -38,7 +38,7 @@ namespace StregSystem
         {
             get
             {
-                return LastName;
+                return this.LastName;
             }
             set
             {
@@ -50,18 +50,20 @@ namespace StregSystem
         /// <summary>
         /// The UserName of the User.
         /// </summary>
+
+        private string userName;    //jeg ved ikke hvorfor jeg skal lave en privat her, mens alle andre steder ser det ud til at virke.
         public string UserName 
         {
             get
             {
-                return UserName;
+                return this.userName;
             }
             set 
             {
                 Regex UserNameCheck = new Regex(@"[a-z0-9_]$"); //Jeg har brugt MSDN til at forstå og bruge regular expression
                 if (UserNameCheck.IsMatch(value))
                 {
-                    UserName = value;
+                    this.userName = value;
                 }
                 else
                 {
