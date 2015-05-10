@@ -60,13 +60,16 @@ namespace StregSystem
         public void DisplayUserBuysProduct(BuyTransaction transaction)
         {
             Console.WriteLine(transaction.ToString());
-            Thread.Sleep(2000);
+            Console.ReadKey();
 
         }
 
         public void DisplayUserBuysProduct(int count, User user)
         {
-            Console.WriteLine(stregSystem.GetTransactionList(user, count).ToString());
+            foreach (Transaction element in stregSystem.GetTransactionList(user, count))
+            {
+                Console.WriteLine(element.ToString());
+            }
             Console.ReadKey();
         }
 

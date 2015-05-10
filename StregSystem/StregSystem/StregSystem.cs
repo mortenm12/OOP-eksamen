@@ -38,6 +38,7 @@ namespace StregSystem
                 Amount = amount,
                 TheUser = user,
             };
+            ExecuteTransaction(InsertCash);
         }
 
         public void ExecuteTransaction(Transaction transaction)
@@ -82,7 +83,6 @@ namespace StregSystem
             else
             {
                 throw new NotAUserExeption(userName);
-                return new User(); //ellers får jeg en fejl om at ikke alle veje fører til en return
             }
         }
 

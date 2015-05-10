@@ -71,6 +71,7 @@ namespace StregSystem
                 {
                     stregSystem.BuyProduct(stregSystem.GetUser(commandInfo[0]), stregSystem.GetProduct(Convert.ToUInt32(commandInfo[1])));
                 }
+                CLI.DisplayUserBuysProduct(count, stregSystem.GetUser(commandInfo[0]));
             }
             else if(space.Length==2)
             {
@@ -79,7 +80,8 @@ namespace StregSystem
                 
                 
                 stregSystem.BuyProduct(stregSystem.GetUser(commandInfo[0]), stregSystem.GetProduct(Convert.ToUInt32(commandInfo[1])));
-                
+
+                CLI.DisplayUserBuysProduct((BuyTransaction)stregSystem.ExecutedTransactions[stregSystem.ExecutedTransactions.Count-1]);
                 
             }
             
