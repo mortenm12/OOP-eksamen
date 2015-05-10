@@ -11,7 +11,7 @@ namespace StregSystem.Products
         /// <summary>
         /// The products ID.
         /// </summary>
-        public readonly uint ProductID;
+        public uint ProductID;
 
         /// <summary>
         /// The Name on the Product.

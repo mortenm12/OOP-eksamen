@@ -43,7 +43,7 @@ namespace StregSystem
             try
             {
                 transaction.Execute();
-                System.IO.StreamWriter file = new StreamWriter("c:\\TransactionsLog.txt");
+                System.IO.StreamWriter file = new StreamWriter("c:\\TransactionsLog.txt"); //lært på MSDN
                 file.WriteLine(transaction.ToString());
             }
             catch (InsufficientCreditsException e)
@@ -86,6 +86,27 @@ namespace StregSystem
         public List<Product> GetActiveProducts()
         {
             return ProductList.FindAll(x => x.Active == true).ToList();
+        }
+
+        public void FillProductList()
+        {
+            System.IO.StreamReader file = new StreamReader("c:\\product.csv");
+            string line;
+            char[] parser ={';',';',';',';'};
+            while ((line = file.ReadLine()) != null)
+            {
+                string[] productInfo = line.Split(parser); //lært på MSDN
+                ProductList.Add(new Product()
+                               {
+                                   ProductID= Convert.ToUInt32(productInfo[0]),
+                                   Name = productInfo[1],
+                                   Price = Convert.ToInt32(productInfo[2]),
+                                   Active = Convert.ToBoolean(productInfo[3]),
+                                   CanBeBoughtOnCredit = false,
+                               }
+
+                    );
+            }
         }
     }
 }
