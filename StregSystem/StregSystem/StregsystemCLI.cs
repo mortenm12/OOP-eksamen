@@ -126,6 +126,14 @@ namespace StregSystem
                 {
                     DisplayProductNotFound(e.ProductId);
                 }
+                catch (FormatException)
+                {
+                    DisplayGeneralError("You can't use letters as numbers.");
+                }
+                catch(Exception e)
+                {
+                    DisplayGeneralError("Some unhandlet error: " + e.ToString());
+                }
             }
         }
     }

@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace StregSystem
 {
-    public class User //: IComparable
+    public class User : IComparable
     {
         /// <summary>
         /// The ID number of the User.
@@ -123,8 +123,9 @@ namespace StregSystem
             return this.Id.GetHashCode();
         }
 
-        public int CompareTo(User other)
+        public int CompareTo(object obj)
         {
+            User other = (User)obj;
             if (this.Id > other.Id)
                 return 1;
             else if (this.Id < other.Id)

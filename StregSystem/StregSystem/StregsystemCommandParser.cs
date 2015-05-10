@@ -62,6 +62,11 @@ namespace StregSystem
                 CLI.DisplayUserBuysProduct((BuyTransaction)stregSystem.ExecutedTransactions[stregSystem.ExecutedTransactions.Count-1]);
                 
             }
+            else if(commandlist.Length > 2)
+            {
+                CLI.DisplayTooManyArgumentsError();
+
+            }
             
             else
             {
