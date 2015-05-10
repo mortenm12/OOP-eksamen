@@ -10,6 +10,7 @@ namespace StregSystem
 {
     class StregsystemCLI : IStregsystemUI
     {
+        public StregSystem stregSystem { get; set; }
 
         public void DisplayUserNotFound(string userName)
         {
@@ -43,9 +44,7 @@ namespace StregSystem
 
         public void DisplayUserBuysProduct(int count, User user)
         {
-            //Jeg forstår ikke hvad den skal gøre
-
-            //Hvis den skal vise de 10 sidste købte produkter fra brugeren, skal jeg have adgang til streg system som indeholder listen over transactioner, og hvordan får jeg så adgang til den?
+            Console.WriteLine(stregSystem.GetTransactionList(user, count).ToString());
         }
 
         public void Close()
