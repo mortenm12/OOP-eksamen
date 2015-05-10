@@ -15,54 +15,32 @@ namespace StregSystem
 
         public void CommandParser(string command)
         {
-            string[] space = command.Split(' '); //deler command efter mellemrum og senere tælles der mellemrum
-    
+            
+            string[] commandlist = command.Split(' ');
             if(command.StartsWith(":"))
             {
-                Regex activate = new Regex(@":activate [0-9]+$");
-                Regex deactivate = new Regex(@":deactivate [0-9]+$");
-                Regex crediton = new Regex(@":crediton [0-9]+$");
-                Regex creditoff = new Regex(@":creditoff [0-9]+$");
-                Regex addcredits = new Regex(@":addcredits [a-z0-9]+ [0-9]+$");
-                char[] parser = {' '};
-                if (command == ":q" || command == ":quit")
+
+                Dictionary<string,Action<string[]>> AdminCommands = new Dictionary<string, Action<string[]>>();     //lært om dictionary på MSDN
+                AdminCommands.Add(":activate", (commandinfo) => stregSystem.GetProduct(Convert.ToUInt32(commandinfo[1])).Active = true);
+                AdminCommands.Add(":deactivate", (commandinfo) => stregSystem.GetProduct(Convert.ToUInt32(commandinfo[1])).Active = false);
+                AdminCommands.Add(":crediton", (commandinfo) => stregSystem.GetProduct(Convert.ToUInt32(commandinfo[1])).CanBeBoughtOnCredit = true);
+                AdminCommands.Add(":creditof", (commandinfo) => stregSystem.GetProduct(Convert.ToUInt32(commandinfo[1])).CanBeBoughtOnCredit = false);
+                AdminCommands.Add(":addcredits", (commandinfo) => stregSystem.GetUser(commandinfo[1]).Balance += Convert.ToInt32(commandinfo[2]));
+                AdminCommands.Add(":q", (commandinfo) => CLI.Close());
+                AdminCommands.Add(":quit", (commandinfo) => CLI.Close());
+
+                try
                 {
-                    CLI.Close();
+                    AdminCommands[commandlist[0]](commandlist);
                 }
-                else if (activate.IsMatch(command))
-                {
-                    string[] commandinfo = command.Split(parser);
-                    stregSystem.GetProduct(Convert.ToUInt32(commandinfo[1])).Active = true;
-                }
-                else if (deactivate.IsMatch(command))
-                {
-                    string[] commandinfo = command.Split(parser);
-                    stregSystem.GetProduct(Convert.ToUInt32(commandinfo[1])).Active = false;
-                }
-                else if (crediton.IsMatch(command))
-                {
-                    string[] commandinfo = command.Split(parser);
-                    stregSystem.GetProduct(Convert.ToUInt32(commandinfo[1])).CanBeBoughtOnCredit = true;
-                }
-                else if (creditoff.IsMatch(command))
-                {
-                    string[] commandinfo = command.Split(parser);
-                    stregSystem.GetProduct(Convert.ToUInt32(commandinfo[1])).CanBeBoughtOnCredit = false;
-                }
-                else if (addcredits.IsMatch(command))
-                {
-                    char[] creditparser = {' ',' ' };
-                    string[] commandinfo = command.Split(creditparser);
-                    stregSystem.GetUser(commandinfo[1]).Balance += Convert.ToInt32(commandinfo[2]);
-                    
-                }
-                else
+                catch(ArgumentException)
                 {
                     CLI.DisplayAdminCommandNotFoundMessage(command);
                 }
+                 
 
             }
-            else if(space.Length==3)
+            else if(commandlist.Length==3)
             {
                 char[] parser = { ' ', ' ' };
                 string[] commandInfo = command.Split(parser);
@@ -73,7 +51,7 @@ namespace StregSystem
                 }
                 CLI.DisplayUserBuysProduct(count, stregSystem.GetUser(commandInfo[0]));
             }
-            else if(space.Length==2)
+            else if(commandlist.Length==2)
             {
                 char[] parser = {' '};
                 string[] commandInfo = command.Split(parser);

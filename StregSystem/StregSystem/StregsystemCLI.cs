@@ -37,6 +37,11 @@ namespace StregSystem
         {
             Console.WriteLine(user.ToString());
 
+            if (user.Balance < 5000)
+            {
+                Console.WriteLine("Your balance is less than 50 Dkk.");
+            }
+
             foreach (Transaction element in stregSystem.GetTransactionList(user, 10))
             {
                 Console.WriteLine(element.ToString());
