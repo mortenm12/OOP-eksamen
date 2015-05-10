@@ -82,5 +82,10 @@ namespace StregSystem
             UserTransactionList.OrderBy(x => x.Date).Reverse();
             return UserTransactionList.Take(number).ToList();
         }
+
+        public List<Product> GetActiveProducts()
+        {
+            return ProductList.FindAll(x => x.Active == true).ToList();
+        }
     }
 }
