@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace StregSystem
 {
-    class User //: IComparable
+    public class User //: IComparable
     {
         /// <summary>
         /// The ID number of the User.
