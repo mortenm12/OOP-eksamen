@@ -14,9 +14,9 @@ namespace StregSystem
     class StregSystem
     {
         
-        List<User> UserList = new List<User>();
-        List<Product> ProductList = new List<Product>();
-        List<Transaction> ExecutedTransactions = new List<Transaction>();
+        public List<User> UserList = new List<User>();
+        public List<Product> ProductList = new List<Product>();
+        public List<Transaction> ExecutedTransactions = new List<Transaction>();
 
         public void BuyProduct(User TheUser, Product TheProduct)
         {
