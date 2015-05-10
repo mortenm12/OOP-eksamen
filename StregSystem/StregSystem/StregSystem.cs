@@ -61,8 +61,26 @@ namespace StregSystem
             else
             {
                 //smid en fejl
-                return new Product();
+                return new Product(); //ellers får jeg en fejl om at ikke alle veje fører til en return
             }
+        }
+
+        public User GetUser(string userName)
+        {
+            if (UserList.Exists(x => x.UserName == userName))
+                return UserList.Find(x => x.UserName == userName);
+            else
+            {
+                //smid en fejl
+                return new User(); //ellers får jeg en fejl om at ikke alle veje fører til en return
+            }
+        }
+
+        public List<Transaction> GetTransactionList(User user, int number)
+        {
+            List<Transaction> UserTransactionList = ExecutedTransactions.FindAll(x => x.TheUser == user).ToList();
+            UserTransactionList.OrderBy(x => x.Date).Reverse();
+            return UserTransactionList.Take(number).ToList();
         }
     }
 }
