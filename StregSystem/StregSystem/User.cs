@@ -65,7 +65,8 @@ namespace StregSystem
                 }
                 else
                 {
-                    //smid en fejl
+                    Console.WriteLine("fejl");
+                    Console.ReadKey();
                 }
             }
         }
