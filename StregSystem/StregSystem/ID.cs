@@ -9,48 +9,45 @@ namespace StregSystem
     static class ID
     {
         /// <summary>
-        /// Return the next User Id.
+        /// Return the last User Id.
         /// </summary>
-        public static uint NextUserId
+        public static uint UserId { get; set; }
+
+
+        /// <summary>
+        /// Return the last Product Id.
+        /// </summary>
+        public static uint ProductId { get; set; }
+
+        /// <summary>
+        /// Return the last Transaction Id.
+        /// </summary>
+        public static uint TransactionId { get; set; }
+
+        /// <summary>
+        /// Returns the next UserId.
+        /// </summary>
+        /// <returns></returns>
+        public static uint NextUserId()
         {
-            get
-            {
-                NextUserId++;
-                return NextUserId;
-            }
-            set
-            {
-                NextUserId = value;
-            }
+            UserId++;
+            return UserId;
         }
 
         /// <summary>
-        /// Return the next Product Id.
+        /// Returns the next ProductId.
         /// </summary>
-        public static uint NextProductId {
-            get
-            {
-                return NextProductId++;
-            }
-            set
-            {
-                NextProductId = value;
-            }
+        /// <returns></returns>
+        public static uint NextProductId()
+        {
+            ProductId++;
+            return ProductId;
         }
 
-        /// <summary>
-        /// Return the next Transaction Id.
-        /// </summary>
-        public static uint NextTransactionId
+        public static uint NextTransactionId()
         {
-            get
-            {
-                return NextTransactionId++;
-            }
-            set
-            {
-                NextTransactionId = value;
-            }
+            TransactionId++;
+            return TransactionId;
         }
     }
 }

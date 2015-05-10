@@ -21,7 +21,7 @@ namespace StregSystem.Transaction
 
         public InsertCashTransaction()
         {
-            TransactionId = ID.NextTransactionId;
+            TransactionId = ID.NextTransactionId();
             Date = DateTime.Now;
         }
     }
