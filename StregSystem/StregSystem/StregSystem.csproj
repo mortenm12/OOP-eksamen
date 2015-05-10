@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IStregsystem.cs" />
     <Compile Include="IStregsystemUI.cs" />
     <Compile Include="StregsystemCLI.cs" />
+    <Compile Include="StregsystemCommandParser.cs" />
     <Compile Include="Transactions\BuyTransaction.cs" />
     <Compile Include="ID.cs" />
     <Compile Include="Transactions\InsertCashTransaction.cs" />
