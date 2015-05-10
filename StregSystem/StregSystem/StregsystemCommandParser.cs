@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using StregSystem.Transactions;
 
 namespace StregSystem
 {
@@ -18,11 +19,11 @@ namespace StregSystem
     
             if(command.StartsWith(":"))
             {
-                Regex activate = new Regex(@":activate [0-9]$");
-                Regex deactivate = new Regex(@":deactivate [0-9]$");
-                Regex crediton = new Regex(@":crediton [0-9]$");
-                Regex creditoff = new Regex(@":creditoff [0-9]$");
-                Regex addcredits = new Regex(@":addcredits [a-z0-9] [0-9]$");
+                Regex activate = new Regex(@":activate [0-9]+$");
+                Regex deactivate = new Regex(@":deactivate [0-9]+$");
+                Regex crediton = new Regex(@":crediton [0-9]+$");
+                Regex creditoff = new Regex(@":creditoff [0-9]+$");
+                Regex addcredits = new Regex(@":addcredits [a-z0-9]+ [0-9]+$");
                 char[] parser = {' '};
                 if (command == ":q" || command == ":quit")
                 {
@@ -57,13 +58,12 @@ namespace StregSystem
                 }
                 else
                 {
-                    CLI.DisplayAdminCommandNotFoundMessage("That Command do not exist, try again.");
+                    CLI.DisplayAdminCommandNotFoundMessage(command);
                 }
 
             }
             else if(space.Length==3)
             {
-                Console.WriteLine("multiproduct");
                 char[] parser = { ' ', ' ' };
                 string[] commandInfo = command.Split(parser);
                 int count = Convert.ToInt32(commandInfo[2]);
@@ -74,12 +74,13 @@ namespace StregSystem
             }
             else if(space.Length==2)
             {
-                Console.WriteLine("Oneproduct");
                 char[] parser = {' '};
                 string[] commandInfo = command.Split(parser);
                 
+                
                 stregSystem.BuyProduct(stregSystem.GetUser(commandInfo[0]), stregSystem.GetProduct(Convert.ToUInt32(commandInfo[1])));
-
+                
+                
             }
             
             else

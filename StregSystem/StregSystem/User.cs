@@ -65,7 +65,7 @@ namespace StregSystem
             }
             set 
             {
-                Regex UserNameCheck = new Regex(@"[a-z0-9_]$"); //Jeg har brugt MSDN til at forstå og bruge regular expression
+                Regex UserNameCheck = new Regex(@"[a-z0-9_]+$"); //Jeg har brugt MSDN til at forstå og bruge regular expression
                 if (UserNameCheck.IsMatch(value))
                 {
                     this.userName = value;
@@ -89,7 +89,7 @@ namespace StregSystem
             }
             set
             {
-                Regex EmailCheck = new Regex(@"[a-zA-Z0-9.-_]@[a-zA-Z0-9][a-zA-Z0-9.-][a-zA-Z0-9].[a-zA-Z0-9]$");
+                Regex EmailCheck = new Regex(@"[a-zA-Z0-9.-_]+@[a-zA-Z0-9][a-zA-Z0-9.-]+[a-zA-Z0-9]+.[a-zA-Z0-9]+$");
                 if (EmailCheck.IsMatch(value))
                 {
                     email = value;

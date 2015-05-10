@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using StregSystem.Transactions;
 using StregSystem.Products;
+using System.Threading;
+using StregSystem.Exeptions;
 
 namespace StregSystem
 {
@@ -34,6 +36,12 @@ namespace StregSystem
         public void DisplayUserInfo(User user)
         {
             Console.WriteLine(user.ToString());
+
+            foreach (Transaction element in stregSystem.GetTransactionList(user, 10))
+            {
+                Console.WriteLine(element.ToString());
+            }
+
             Console.ReadKey();
         }
 
@@ -52,7 +60,8 @@ namespace StregSystem
         public void DisplayUserBuysProduct(BuyTransaction transaction)
         {
             Console.WriteLine(transaction.ToString());
-            Console.ReadKey();
+            Thread.Sleep(2000);
+
         }
 
         public void DisplayUserBuysProduct(int count, User user)
@@ -89,8 +98,26 @@ namespace StregSystem
                 {
                     Console.WriteLine(element.ToString());
                 }
-                
-                parser.CommandParser(Console.ReadLine());
+                try
+                {
+                    parser.CommandParser(Console.ReadLine());
+                }
+                catch (InsufficientCreditsException e)
+                {
+                    DisplayInsufficientCash(e.TheUser, e.TheProduct);
+                }
+                catch (NotAUserExeption e)
+                {
+                    DisplayUserNotFound(e.UserName);
+                }
+                catch (NotValidTextExeption e)
+                {
+                    DisplayGeneralError("The file product.csv has a not valid line.");
+                }
+                catch (ProductNotActiveExeption e)
+                {
+                    DisplayProductNotFound(e.ProductId);
+                }
             }
         }
     }

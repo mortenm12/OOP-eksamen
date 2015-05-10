@@ -48,6 +48,7 @@ namespace StregSystem
                 transaction.Execute();
 
                 file.WriteLine(transaction.FullString());
+                
 
             }
             catch (InsufficientCreditsException e)
@@ -80,7 +81,7 @@ namespace StregSystem
                 return UserList.Find(x => x.UserName == userName);
             else
             {
-#warning               throw new NotAUserExeption();
+                throw new NotAUserExeption(userName);
                 return new User(); //ellers får jeg en fejl om at ikke alle veje fører til en return
             }
         }
@@ -88,8 +89,7 @@ namespace StregSystem
         public List<Transaction> GetTransactionList(User user, int count)
         {
             List<Transaction> UserTransactionList = ExecutedTransactions.FindAll(x => x.TheUser == user).ToList();
-            UserTransactionList.OrderBy(x => x.Date).Reverse();
-            return UserTransactionList.Take(count).ToList();
+            return UserTransactionList.OrderByDescending(x => x.Date).Take(count).ToList();
         }
 
         public List<Product> GetActiveProducts()
@@ -195,7 +195,7 @@ namespace StregSystem
                 }
                 else
                 {
-#warning            throw new NotValidTextExeption();
+                    throw new NotValidTextExeption(line);
                 }
             }
             file.Close();
