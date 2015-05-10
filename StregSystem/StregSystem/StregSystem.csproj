@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IStregsystemUI.cs" />
+    <Compile Include="StregsystemCLI.cs" />
     <Compile Include="Transactions\BuyTransaction.cs" />
     <Compile Include="ID.cs" />
     <Compile Include="Transactions\InsertCashTransaction.cs" />

@@ -43,7 +43,7 @@ namespace StregSystem
             try
             {
                 transaction.Execute();
-                System.IO.StreamWriter file = new StreamWriter("c:\\TransactionsLog.txt"); //lært på MSDN
+                System.IO.StreamWriter file = new StreamWriter("c:\\TransactionsLog.txt"); //Læst om skrivning til filer på MSDN
                 file.WriteLine(transaction.ToString());
             }
             catch (InsufficientCreditsException e)
@@ -76,11 +76,11 @@ namespace StregSystem
             }
         }
 
-        public List<Transaction> GetTransactionList(User user, int number)
+        public List<Transaction> GetTransactionList(User user, int count)
         {
             List<Transaction> UserTransactionList = ExecutedTransactions.FindAll(x => x.TheUser == user).ToList();
             UserTransactionList.OrderBy(x => x.Date).Reverse();
-            return UserTransactionList.Take(number).ToList();
+            return UserTransactionList.Take(count).ToList();
         }
 
         public List<Product> GetActiveProducts()
@@ -90,7 +90,7 @@ namespace StregSystem
 
         public void FillProductList()
         {
-            System.IO.StreamReader file = new StreamReader("c:\\product.csv");
+            System.IO.StreamReader file = new StreamReader("c:\\product.csv");  // læst om læsning af filer på MSDN
             string line;
             char[] parser ={';',';',';',';'};
             while ((line = file.ReadLine()) != null)
