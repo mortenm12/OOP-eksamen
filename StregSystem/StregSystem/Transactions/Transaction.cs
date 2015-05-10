@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StregSystem.Transaction
+namespace StregSystem.Transactions
 {
     class Transaction
     {

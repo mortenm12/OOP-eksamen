@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using StregSystem.Products;
 using StregSystem.Exeptions;
 
-namespace StregSystem.Transaction
+namespace StregSystem.Transactions
 {
     class BuyTransaction : Transaction
     {
