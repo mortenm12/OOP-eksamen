@@ -14,8 +14,8 @@ namespace StregSystem
 
         public void CommandParser(string command)
         {
-            Regex OneProduct = new Regex(@"[a-z0-9] [0-9]$");             // tjek på en anden måde for antallet af mellem rum, for dette virker ikke.
-            Regex MultiProduct = new Regex(@"[a-z0-9] [0-9] [0-9]$");     
+            string[] space = command.Split(' '); //deler command efter mellemrum og senere tælles der mellemrum
+    
             if(command.StartsWith(":"))
             {
                 Regex activate = new Regex(@":activate [0-9]$");
@@ -61,8 +61,9 @@ namespace StregSystem
                 }
 
             }
-            else if(MultiProduct.IsMatch(command))
+            else if(space.Length==3)
             {
+                Console.WriteLine("multiproduct");
                 char[] parser = { ' ', ' ' };
                 string[] commandInfo = command.Split(parser);
                 int count = Convert.ToInt32(commandInfo[2]);
@@ -71,8 +72,9 @@ namespace StregSystem
                     stregSystem.BuyProduct(stregSystem.GetUser(commandInfo[0]), stregSystem.GetProduct(Convert.ToUInt32(commandInfo[1])));
                 }
             }
-            else if(OneProduct.IsMatch(command))
+            else if(space.Length==2)
             {
+                Console.WriteLine("Oneproduct");
                 char[] parser = {' '};
                 string[] commandInfo = command.Split(parser);
                 
