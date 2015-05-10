@@ -131,6 +131,8 @@ namespace StregSystem
                 ProductList.Add(newproduct);
             }
             file.Close();
+
+            ID.ProductId = ProductList[ProductList.Count - 1].ProductID;
         }
 
         public void FillUserList()
@@ -154,6 +156,7 @@ namespace StregSystem
                     );
             }
             file.Close();
+            ID.UserId = UserList[UserList.Count - 1].Id;
         }
 
         public void FillTransactionsList()
