@@ -90,16 +90,17 @@ namespace StregSystem
 
         public void FillProductList()
         {
-            System.IO.StreamReader file = new StreamReader("c:\\product.csv");  // læst om læsning af filer på MSDN
+            System.IO.StreamReader file = new StreamReader("..\\..\\products.csv");  // læst om læsning af filer på MSDN
             string line;
             char[] parser ={';',';',';',';'};
             line = file.ReadLine(); //for at fjerne den første linje.
             while ((line = file.ReadLine()) != null)
             {
                 string[] productInfo = line.Split(parser); //lært på MSDN
+                Console.WriteLine(productInfo[1]);
                 ProductList.Add(new Product()
                     {
-                        ProductID= Convert.ToUInt32(productInfo[0]),
+                        ProductID = Convert.ToUInt32(productInfo[0]),
                         Name = productInfo[1],
                         Price = Convert.ToInt32(productInfo[2]),
                         Active = Convert.ToBoolean(productInfo[3]),

@@ -12,6 +12,8 @@ namespace StregSystem
     {
          public StregSystem stregSystemm;
 
+         public bool close { get; set; }
+
          public StregsystemCLI(StregSystem stregsystem)
          {
              stregSystemm = stregsystem;
@@ -55,7 +57,7 @@ namespace StregSystem
 
         public void Close()
         {
-            //close
+            close = true;
         }
 
         public void DisplayInsufficientCash(User user, Product product)
@@ -66,6 +68,21 @@ namespace StregSystem
         public void DisplayGeneralError(string errorString)
         {
             Console.WriteLine(errorString);
+        }
+
+        internal void Start(StregsystemCommandParser parser)
+        {
+            close = false;
+
+            stregSystemm.FillProductList();
+
+
+            while (close == false)
+            {
+                Console.Clear();
+                Console.WriteLine(stregSystem.GetActiveProducts().ToString());
+                parser.CommandParser(Console.ReadLine());
+            }
         }
     }
 }

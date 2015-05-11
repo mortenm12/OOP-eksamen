@@ -16,18 +16,19 @@ namespace StregSystem.Products
         /// <summary>
         /// The Name on the Product.
         /// </summary>
+        private string name { get; set; }
         public string Name 
         {
             get
             {
-                return Name;
+                return name;
             }
             set
             {
                 if (value == null)
                     throw new ArgumentNullException("You Can't set Name to NULL");
                 else
-                    Name = value;
+                    name = value;
             }
         }
 
