@@ -41,7 +41,7 @@ namespace StregSystem.Transactions
             }
             else
             {
-                throw new ProductNotActiveExeption(TheUser, TheProduct, "The product isn't active.");
+                throw new ProductNotActiveExeption(TheProduct.ProductID, "The product isn't active.");
             }
         }
 

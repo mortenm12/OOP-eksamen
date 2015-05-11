@@ -9,16 +9,13 @@ namespace StregSystem.Exeptions
 {
     class ProductNotActiveExeption : Exception
     {
-        public User TheUser { get; set; }
-
-        public Product TheProduct { get; set; }
+        public uint ProductId { get; set; }
 
         public String Fail { get; set; }
 
-        public ProductNotActiveExeption(User theUser, Product theProduct, string fail)
+        public ProductNotActiveExeption(uint id, string fail)
         {
-            TheUser = theUser;
-            TheProduct = theProduct;
+            ProductId = id;
             Fail = fail;
         }
     }

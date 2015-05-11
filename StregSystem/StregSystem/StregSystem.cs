@@ -52,7 +52,7 @@ namespace StregSystem
             }
             catch (InsufficientCreditsException e)
             {
-                // skriv fejlen ud til brugeren, der er ikke nok penge på kontoen.
+                throw new InsufficientCreditsException(e.TheUser,e.TheProduct,e.Fail);
             }
             finally
             {
@@ -69,8 +69,8 @@ namespace StregSystem
             }
             else
             {
-                //smid en fejl
-                return new Product(); //ellers får jeg en fejl om at ikke alle veje fører til en return
+                throw new ProductNotActiveExeption(productId, "The product couldn't be fount.");
+                
             }
         }
 
@@ -80,7 +80,7 @@ namespace StregSystem
                 return UserList.Find(x => x.UserName == userName);
             else
             {
-                //smid en fejl
+#warning               throw new NotAUserExeption();
                 return new User(); //ellers får jeg en fejl om at ikke alle veje fører til en return
             }
         }
@@ -192,7 +192,7 @@ namespace StregSystem
                 }
                 else
                 {
-#warning            //noget skidt vil så ske her :(
+#warning            throw new NotValidTextExeption();
                 }
             }
             file.Close();
