@@ -14,8 +14,8 @@ namespace StregSystem
 
         public void CommandParser(string command)
         {
-            Regex OneProduct = new Regex(@"[a-z0-9] [0-9]$");
-            Regex MultiProduct = new Regex(@"[a-z0-9] [0-9] [0-9]$");
+            Regex OneProduct = new Regex(@"[a-z0-9] [0-9]$");             // tjek på en anden måde for antallet af mellem rum, for dette virker ikke.
+            Regex MultiProduct = new Regex(@"[a-z0-9] [0-9] [0-9]$");     
             if(command.StartsWith(":"))
             {
                 Regex activate = new Regex(@":activate [0-9]$");
@@ -61,6 +61,16 @@ namespace StregSystem
                 }
 
             }
+            else if(MultiProduct.IsMatch(command))
+            {
+                char[] parser = { ' ', ' ' };
+                string[] commandInfo = command.Split(parser);
+                int count = Convert.ToInt32(commandInfo[2]);
+                for (int i = 0; i < count; i++)
+                {
+                    stregSystem.BuyProduct(stregSystem.GetUser(commandInfo[0]), stregSystem.GetProduct(Convert.ToUInt32(commandInfo[1])));
+                }
+            }
             else if(OneProduct.IsMatch(command))
             {
                 char[] parser = {' '};
@@ -69,18 +79,7 @@ namespace StregSystem
                 stregSystem.BuyProduct(stregSystem.GetUser(commandInfo[0]), stregSystem.GetProduct(Convert.ToUInt32(commandInfo[1])));
 
             }
-            else if (MultiProduct.IsMatch(command))
-            {
-                char[] parser = { ' ', ' '};
-                string[] commandInfo = command.Split(parser);
-                int count = Convert.ToInt32(commandInfo[2]);
-                for (int i = 0; i < count; i++)
-                {
-                    stregSystem.BuyProduct(stregSystem.GetUser(commandInfo[0]), stregSystem.GetProduct(Convert.ToUInt32(commandInfo[1])));
-                }
-                
-
-            }
+            
             else
             {
 

@@ -196,6 +196,12 @@ namespace StregSystem
                 }
             }
             file.Close();
+
+            int last = ExecutedTransactions.Count()-1;
+            if(last <= 0)
+                ID.TransactionId = 0;
+            else
+                ID.TransactionId = ExecutedTransactions[last].TransactionId;
         }
 
         public StregSystem()
