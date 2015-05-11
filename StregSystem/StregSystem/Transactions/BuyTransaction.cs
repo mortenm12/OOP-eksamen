@@ -16,7 +16,7 @@ namespace StregSystem.Transactions
         public Product TheProduct { get; set; }
 
         /// <summary>
-        /// The price on the product at the time it got bought.
+        /// The price on the product at the time it was bought.
         /// </summary>
         public int Amount { get; set; }
 
@@ -49,6 +49,11 @@ namespace StregSystem.Transactions
         {
             TransactionId = ID.NextTransactionId();
             Date = DateTime.Now;
+        }
+
+        public override string FullString()
+        {
+            return "BT," + TransactionId + "," + TheUser + "," + TheProduct + "," + Amount + "," + Date;
         }
     }
 }

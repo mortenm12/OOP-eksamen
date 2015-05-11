@@ -52,6 +52,6 @@ namespace StregSystem.Transactions
             return TransactionId + " " + Amount + " " + Date;
         }
 
-        
+        public abstract string FullString();
     }
 }

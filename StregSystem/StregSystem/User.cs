@@ -131,6 +131,5 @@ namespace StregSystem
             Id = ID.NextUserId();
         }
 
-       
     }
 }

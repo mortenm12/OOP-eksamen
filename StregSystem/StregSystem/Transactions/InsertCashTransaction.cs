@@ -24,5 +24,10 @@ namespace StregSystem.Transactions
             TransactionId = ID.NextTransactionId();
             Date = DateTime.Now;
         }
+
+        public override string FullString()
+        {
+            return "IC," + TransactionId + "," + TheUser + "," + Amount + "," + Date;
+        }
     }
 }

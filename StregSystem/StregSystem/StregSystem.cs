@@ -44,7 +44,7 @@ namespace StregSystem
             {
                 transaction.Execute();
                 System.IO.StreamWriter file = new StreamWriter("c:\\TransactionsLog.txt"); //Læst om skrivning til filer på MSDN
-                file.WriteLine(transaction.ToString());
+                file.WriteLine(transaction.FullString());
             }
             catch (InsufficientCreditsException e)
             {
@@ -93,20 +93,50 @@ namespace StregSystem
             System.IO.StreamReader file = new StreamReader("c:\\product.csv");  // læst om læsning af filer på MSDN
             string line;
             char[] parser ={';',';',';',';'};
+            line = file.ReadLine(); //for at fjerne den første linje.
             while ((line = file.ReadLine()) != null)
             {
                 string[] productInfo = line.Split(parser); //lært på MSDN
                 ProductList.Add(new Product()
-                               {
-                                   ProductID= Convert.ToUInt32(productInfo[0]),
-                                   Name = productInfo[1],
-                                   Price = Convert.ToInt32(productInfo[2]),
-                                   Active = Convert.ToBoolean(productInfo[3]),
-                                   CanBeBoughtOnCredit = false,
-                               }
-
+                    {
+                        ProductID= Convert.ToUInt32(productInfo[0]),
+                        Name = productInfo[1],
+                        Price = Convert.ToInt32(productInfo[2]),
+                        Active = Convert.ToBoolean(productInfo[3]),
+                        CanBeBoughtOnCredit = false,
+                    }
                     );
             }
+        }
+
+        public void FillUserList()
+        {
+            System.IO.StreamReader file = new StreamReader("c:\\UserList.txt");
+            string line;
+            char[] parser = { ',', ',', ',', ',', ',' };
+            line = file.ReadLine(); //for at fjerne den første linje.
+            while ((line = file.ReadLine()) != null)
+            {
+                string[] userInfo = line.Split(parser);
+                UserList.Add(new User()
+                    {
+                        Id = Convert.ToUInt32(userInfo[0]),
+                        UserName = userInfo[1],
+                        FirstName = userInfo[2],
+                        LastName = userInfo[3],
+                        Email = userInfo[4],
+                        Balance = Convert.ToInt32(userInfo[5])
+                    }
+                    );
+            }
+        }
+
+        public void FillTransactionsList()
+        {
+            System.IO.StreamReader file = new StreamReader("c:\\TransactionsLog.txt");
+            string line;
+            char[] parser = { ',', ',', ',', ',', ',' };
+            line = file.ReadLine(); //for at fjerne den første linje.
         }
     }
 }
