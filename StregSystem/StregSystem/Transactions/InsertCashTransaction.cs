@@ -27,7 +27,7 @@ namespace StregSystem.Transactions
 
         public override string FullString()
         {
-            return "IC," + TransactionId + "," + TheUser + "," + Amount + "," + Date;
+            return "IC," + TransactionId + "," + TheUser.UserName + "," + Amount + "," + Date;
         }
     }
 }

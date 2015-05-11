@@ -53,7 +53,7 @@ namespace StregSystem.Transactions
 
         public override string FullString()
         {
-            return "BT," + TransactionId + "," + TheUser + "," + TheProduct + "," + Amount + "," + Date;
+            return "BT," + TransactionId + "," + TheUser.UserName + "," + TheProduct.ProductID + "," + Amount + "," + Date;
         }
     }
 }

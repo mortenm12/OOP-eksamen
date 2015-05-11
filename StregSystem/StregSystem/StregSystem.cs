@@ -135,8 +135,41 @@ namespace StregSystem
         {
             System.IO.StreamReader file = new StreamReader("c:\\TransactionsLog.txt");
             string line;
-            char[] parser = { ',', ',', ',', ',', ',' };
+            char[] BTparser = { ',', ',', ',', ',', ',' };
+            char[] ICparser = { ',', ',', ',', ',' };
             line = file.ReadLine(); //for at fjerne den første linje.
+            while ((line = file.ReadLine()) != null)
+            {
+                if (line.StartsWith("BT"))
+                {
+                    string[] transactionsInfo = line.Split(BTparser);
+                    ExecutedTransactions.Add(new BuyTransaction()
+                        {
+                            TransactionId = Convert.ToUInt32(transactionsInfo[1]),
+                            TheUser = GetUser(transactionsInfo[2]),
+                            TheProduct = GetProduct(Convert.ToUInt32(transactionsInfo[3])),
+                            Amount = Convert.ToInt32(transactionsInfo[4]),
+                            Date = Convert.ToDateTime(transactionsInfo[5])
+                        }
+                        );
+                }
+                else if (line.StartsWith("IC"))
+                {
+                    string[] transactionsInfo = line.Split(ICparser);
+                    ExecutedTransactions.Add(new BuyTransaction()
+                    {
+                        TransactionId = Convert.ToUInt32(transactionsInfo[1]),
+                        TheUser = GetUser(transactionsInfo[2]),
+                        Amount = Convert.ToInt32(transactionsInfo[3]),
+                        Date = Convert.ToDateTime(transactionsInfo[4])
+                    }
+                        );
+                }
+                else
+                {
+#warning            //noget skidt vil så ske her :(
+                }
+            }
         }
     }
 }
