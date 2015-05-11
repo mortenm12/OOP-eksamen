@@ -8,7 +8,7 @@ using StregSystem.Products;
 
 namespace StregSystem
 {
-    interface IStregsystemUI //Jeg kan ikke se hvad jeg skal bruge interfacet her til, og desuden skaber det problemmer.
+    interface IStregsystemUI
     {
         void DisplayUserNotFound(string userName);
         void DisplayProductNotFound(uint id);

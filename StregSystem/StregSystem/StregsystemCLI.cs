@@ -10,6 +10,12 @@ namespace StregSystem
 {
      class StregsystemCLI : IStregsystemUI
     {
+         public StregSystem stregSystemm;
+
+         public StregsystemCLI(StregSystem stregsystem)
+         {
+             stregSystemm = stregsystem;
+         }
         public StregSystem stregSystem { get; set; }
 
         public void DisplayUserNotFound(string userName)
@@ -44,7 +50,7 @@ namespace StregSystem
 
         public void DisplayUserBuysProduct(int count, User user)
         {
-            Console.WriteLine(stregSystem.GetTransactionList(user, count).ToString());
+            Console.WriteLine(stregSystemm.GetTransactionList(user, count).ToString());
         }
 
         public void Close()

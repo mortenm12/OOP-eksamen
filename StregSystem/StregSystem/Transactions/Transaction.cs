@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StregSystem.Transactions
 {
-    class Transaction
+    abstract class Transaction
     {
         public uint TransactionId;
 
@@ -42,15 +42,8 @@ namespace StregSystem.Transactions
 
         public int Amount { get; set; }
 
-        public virtual void Execute()
-        {
+        public abstract void Execute();
 
-        }
-
-        public override string ToString()
-        {
-            return TransactionId + " " + Amount + " " + Date;
-        }
 
         public abstract string FullString();
     }
