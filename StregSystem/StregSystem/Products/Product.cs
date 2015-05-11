@@ -56,5 +56,10 @@ namespace StregSystem.Products
         {
             ProductID = id;
         }
+
+        public override string ToString()
+        {
+            return "ID: " + ProductID + " " + Name +" "+ ((double)Price / 100) + "Dkk";
+        }
     }
 }

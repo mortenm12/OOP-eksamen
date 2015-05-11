@@ -43,7 +43,7 @@ namespace StregSystem
             try
             {
                 transaction.Execute();
-                System.IO.StreamWriter file = new StreamWriter("c:\\TransactionsLog.txt"); //Læst om skrivning til filer på MSDN
+                System.IO.StreamWriter file = new StreamWriter("..\\..\\TransactionsLog.txt"); //Læst om skrivning til filer på MSDN
                 file.WriteLine(transaction.FullString());
             }
             catch (InsufficientCreditsException e)
@@ -90,29 +90,42 @@ namespace StregSystem
 
         public void FillProductList()
         {
-            System.IO.StreamReader file = new StreamReader("..\\..\\products.csv");  // læst om læsning af filer på MSDN
+            System.IO.StreamReader file = new StreamReader("..\\..\\products.csv", System.Text.Encoding.Default);  // læst om læsning af filer på MSDN, og for at få æøå ind brugte jeg eksemplet fra http://www.eksperten.dk/spm/874431
             string line;
             char[] parser ={';',';',';',';'};
             line = file.ReadLine(); //for at fjerne den første linje.
             while ((line = file.ReadLine()) != null)
             {
                 string[] productInfo = line.Split(parser); //lært på MSDN
-                Console.WriteLine(productInfo[1]);
-                ProductList.Add(new Product()
-                    {
-                        ProductID = Convert.ToUInt32(productInfo[0]),
-                        Name = productInfo[1],
-                        Price = Convert.ToInt32(productInfo[2]),
-                        Active = Convert.ToBoolean(productInfo[3]),
-                        CanBeBoughtOnCredit = false,
-                    }
-                    );
+                
+                Console.WriteLine(productInfo[1]);//skal fjernes, er kun til debug
+
+                Product newproduct = new Product()
+                     {
+                         ProductID = Convert.ToUInt32(productInfo[0]),
+                         Price = Convert.ToInt32(productInfo[2]),
+                         Active = (productInfo[3] == "1" ? true : false),
+                         CanBeBoughtOnCredit = false,
+                     };
+
+                if(productInfo[1].StartsWith("<"))
+                {
+                    char[] parserh = { '<','>', '<','>' };
+                   string[] namesplit = productInfo[1].Split(parserh);
+                   newproduct.Name = namesplit[2];
+                }
+                else
+                {
+                    newproduct.Name = productInfo[1];
+                }
+
+                ProductList.Add(newproduct);
             }
         }
 
         public void FillUserList()
         {
-            System.IO.StreamReader file = new StreamReader("c:\\UserList.txt");
+            System.IO.StreamReader file = new StreamReader("..\\..\\UserList.txt");
             string line;
             char[] parser = { ',', ',', ',', ',', ',' };
             line = file.ReadLine(); //for at fjerne den første linje.
@@ -134,7 +147,7 @@ namespace StregSystem
 
         public void FillTransactionsList()
         {
-            System.IO.StreamReader file = new StreamReader("c:\\TransactionsLog.txt");
+            System.IO.StreamReader file = new StreamReader("..\\..\\TransactionsLog.txt");
             string line;
             char[] BTparser = { ',', ',', ',', ',', ',' };
             char[] ICparser = { ',', ',', ',', ',' };
@@ -171,6 +184,13 @@ namespace StregSystem
 #warning            //noget skidt vil så ske her :(
                 }
             }
+        }
+
+        public StregSystem()
+        {
+            FillProductList();
+            FillUserList();
+            FillTransactionsList();
         }
     }
 }

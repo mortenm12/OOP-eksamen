@@ -10,33 +10,35 @@ namespace StregSystem.Transactions
     {
         public uint TransactionId;
 
+        private User theUser { get; set; }
         public User TheUser
         {
             get
             {
-                return TheUser;
+                return theUser;
             }
             set
             {
                 if (value == null)
                     throw new ArgumentNullException("The User can't be NULL.");
                 else
-                    TheUser = value;
+                    theUser = value;
             }
         }
 
+        private DateTime date { get; set; }
         public DateTime Date 
         {
             get
             {
-                return Date;
+                return date;
             }
             set 
             {
                 if (value == null)
                     throw new ArgumentNullException("The Date can't be NULL.");
                 else
-                    Date = value;
+                    date = value;
             } 
         }
 

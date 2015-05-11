@@ -17,16 +17,18 @@ namespace StregSystem
         /// <summary>
         /// The FirstName of the User.
         /// </summary>
+        private string firstName { get; set; }
         public string FirstName
         {
             get
             {
-                return FirstName;
+                return firstName;
             }
             set
             {
                 if (value == null)
                     throw new ArgumentNullException("You Can't set Firstname to NULL");
+                firstName = value;
             }
         }
 
@@ -34,16 +36,19 @@ namespace StregSystem
         /// <summary>
         /// The LastName of the User.
         /// </summary>
+        private string lastName { get; set; }
         public string LastName
         {
             get
             {
-                return this.LastName;
+                return lastName;
             }
             set
             {
                 if (value == null)
                     throw new ArgumentNullException("You Can't set Firstname to NULL");
+                else
+                    lastName = value;
             }
         }
 
@@ -76,17 +81,18 @@ namespace StregSystem
         /// <summary>
         /// The Email adress og the User.
         /// </summary>
+        private string email { get; set; }
         public string Email {
             get
             {
-                return Email;
+                return email;
             }
             set
             {
                 Regex EmailCheck = new Regex(@"[a-zA-Z0-9.-_]@[a-zA-Z0-9][a-zA-Z0-9.-][a-zA-Z0-9].[a-zA-Z0-9]$");
                 if (EmailCheck.IsMatch(value))
                 {
-                    Email = value;
+                    email = value;
                 }
                 else
                 {
@@ -103,7 +109,7 @@ namespace StregSystem
 
         public override string ToString()
         {
-            return FirstName + " " + LastName + " " + Email;
+            return UserName+" "+FirstName + " " + LastName + " " + ((double)Balance)/100 + "Dkk";
         }
 
         public override bool Equals(object obj)

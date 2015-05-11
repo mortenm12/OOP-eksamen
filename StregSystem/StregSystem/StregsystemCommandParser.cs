@@ -57,7 +57,7 @@ namespace StregSystem
                 }
                 else
                 {
-#warning        throw new NotACommandExeption(command); //smid en fejl
+                    CLI.DisplayAdminCommandNotFoundMessage("That Command do not exist, try again.");
                 }
 
             }
@@ -83,7 +83,7 @@ namespace StregSystem
             }
             else
             {
-#warning        throw new NotACommandExeption(command); //smid en fejl
+                CLI.DisplayGeneralError("That Command do not exist, try again.");
             }
 
         }
