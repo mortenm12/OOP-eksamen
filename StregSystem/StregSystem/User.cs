@@ -12,7 +12,7 @@ namespace StregSystem
         /// <summary>
         /// The ID number of the User.
         /// </summary>
-        public long Id{get;set;}
+        public uint Id{get;set;}
 
         /// <summary>
         /// The FirstName of the User.

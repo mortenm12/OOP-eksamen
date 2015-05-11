@@ -10,7 +10,7 @@ namespace StregSystem
     class StregsystemCommandParser : IStregsystem
     {
         StregSystem stregSystem { get; set; }
-        StregsystemCLI CLI { get; set; }
+        IStregsystemUI CLI { get; set; }
 
         public void CommandParser(string command)
         {

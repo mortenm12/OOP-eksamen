@@ -1,0 +1,7 @@
+D:\GitHub\OOP-eksamen\StregSystem\UnitTest\obj\Debug\UnitTest.csprojResolveAssemblyReference.cache
+D:\GitHub\OOP-eksamen\StregSystem\UnitTest\bin\Debug\UnitTest.dll
+D:\GitHub\OOP-eksamen\StregSystem\UnitTest\bin\Debug\UnitTest.pdb
+D:\GitHub\OOP-eksamen\StregSystem\UnitTest\bin\Debug\StregSystem.exe
+D:\GitHub\OOP-eksamen\StregSystem\UnitTest\bin\Debug\StregSystem.pdb
+D:\GitHub\OOP-eksamen\StregSystem\UnitTest\obj\Debug\UnitTest.dll
+D:\GitHub\OOP-eksamen\StregSystem\UnitTest\obj\Debug\UnitTest.pdb

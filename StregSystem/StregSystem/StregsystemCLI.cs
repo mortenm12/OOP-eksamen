@@ -8,11 +8,11 @@ using StregSystem.Products;
 
 namespace StregSystem
 {
-    public class StregsystemCLI : IStregsystemUI
+     class StregsystemCLI : IStregsystemUI
     {
         public StregSystem stregSystem { get; set; }
 
-        public override void DisplayUserNotFound(string userName)
+        public void DisplayUserNotFound(string userName)
         {
             Console.WriteLine(userName + " not found, try again.");
         }
@@ -22,7 +22,7 @@ namespace StregSystem
             Console.WriteLine("ID: " + id + " not found, try again.");
         }
 
-        public override void DisplayUserInfo(User user)
+        public void DisplayUserInfo(User user)
         {
             Console.WriteLine(user.ToString());
         }
