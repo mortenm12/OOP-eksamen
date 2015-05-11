@@ -27,6 +27,8 @@ namespace StregSystem
                 TheUser = TheUser,
                 TheProduct = TheProduct,
             };
+
+           ExecuteTransaction(productbuy);
         }
 
         public void AddCreditsToAccount(User user, int amount)
@@ -40,15 +42,22 @@ namespace StregSystem
 
         public void ExecuteTransaction(Transaction transaction)
         {
+            System.IO.StreamWriter file = new StreamWriter("..\\..\\TransactionsLog.txt",true); //Læst om skrivning til filer på MSDN
             try
             {
                 transaction.Execute();
-                System.IO.StreamWriter file = new StreamWriter("..\\..\\TransactionsLog.txt"); //Læst om skrivning til filer på MSDN
+
                 file.WriteLine(transaction.FullString());
+
             }
             catch (InsufficientCreditsException e)
             {
                 // skriv fejlen ud til brugeren, der er ikke nok penge på kontoen.
+            }
+            finally
+            {
+                if (file != null)
+                    file.Close();
             }
         }
 
@@ -121,6 +130,7 @@ namespace StregSystem
 
                 ProductList.Add(newproduct);
             }
+            file.Close();
         }
 
         public void FillUserList()
@@ -143,6 +153,7 @@ namespace StregSystem
                     }
                     );
             }
+            file.Close();
         }
 
         public void FillTransactionsList()
@@ -184,6 +195,7 @@ namespace StregSystem
 #warning            //noget skidt vil så ske her :(
                 }
             }
+            file.Close();
         }
 
         public StregSystem()

@@ -1,1 +1,4 @@
-BT/IC,ID,UserName,productID,Amount,Date
+BT,2,fedtmule,15,1500,11-05-2015 17:56:30
+BT,1,fedtmule,11,1200,11-05-2015 18:02:56
+BT,2,fedtmule,11,1200,11-05-2015 18:03:42
+BT,3,fedtmule,11,1200,11-05-2015 18:10:38
