@@ -29,7 +29,8 @@ namespace StregSystem
             {
                 if (value == null)
                     throw new ArgumentNullException("You Can't set Firstname to NULL");
-                firstName = value;
+                else
+                    firstName = value;
             }
         }
 
@@ -96,7 +97,7 @@ namespace StregSystem
                 }
                 else
                 {
-                    throw new ArgumentException("THis isn't a correct email :" + value);
+                    throw new ArgumentException("This isn't a correct email :" + value);
                 }
             }
         }
