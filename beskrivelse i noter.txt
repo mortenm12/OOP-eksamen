@@ -1,0 +1,9 @@
+Programmet lever op til alle de krav der stillet i opgaven med undtagelse og tilføjelser som følger.
+
+-Når der skal bestilles mere end en vare er syntaksen som følger. Brugernavn vareId antal, og ikke som i opgaven Brugernavn antal vareID.
+
+-Jeg har valgt at lave en brugerfil, hvor alt dataen om brugeren hentes, dog har jeg ikke sørget for at programmet ved transaktioner overskriver brugerens balance i filen, men kun i programmet.
+
+-Jeg har kun valgt at lave en kort test som tester nogle enkle og simple funktioner i klassen User, da jeg mener at en fuld testklasse vil være alt for omfattende tidskrævende og uden betydning for programmet funktionalitet. Men jeg har alligevel valgt at lave en for at vi har muligheden for at snakke om test til eksamen.
+
+-Der er få enkelte steder i programmet jeg har søgt hjælp ude fra, dette er stof som ikke er blevet dækket i undervisningen, som f.eks. læsning og skrivning af filer og brugen af dictionary, men jeg har også brugt Regex til at sørge for at en tekst streng overholder nogle opsatte krav. Alle de informationer på de oplistede eksempler har jeg søgt informationer om på MSDN, således at jeg har haft mulighed for at bruge dem i programmet. Alle disse steder i programmet er der sat en kommentar som forklarer hvorfra jeg har læst og forstået stoffet til brug i programmet.
