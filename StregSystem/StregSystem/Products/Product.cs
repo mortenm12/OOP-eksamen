@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StregSystem.Products
 {
-    class Product
+    public class Product
     {
         /// <summary>
         /// The products ID.

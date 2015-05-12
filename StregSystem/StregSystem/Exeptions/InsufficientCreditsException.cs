@@ -10,7 +10,7 @@ namespace StregSystem.Exeptions
     /// <summary>
     /// An Exeption there is throw when a user don't have enough money to buy a product.
     /// </summary>
-    class InsufficientCreditsException : Exception
+   public class InsufficientCreditsException : Exception
     {
         /// <summary>
         /// The user there din't have enougt money.

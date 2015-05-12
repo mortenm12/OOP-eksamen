@@ -9,7 +9,7 @@ namespace StregSystem.Exeptions
     /// <summary>
     /// An Exeption there is throw when the text isn't valid.
     /// </summary>
-    class NotValidTextExeption : Exception
+    public class NotValidTextExeption : Exception
     {
         /// <summary>
         /// The text that was't valid.

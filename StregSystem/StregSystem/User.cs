@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
+using StregSystem.Exeptions;
 
 namespace StregSystem
 {
@@ -65,15 +66,14 @@ namespace StregSystem
             }
             set 
             {
-                Regex UserNameCheck = new Regex(@"[a-z0-9_]+$"); //Jeg har brugt MSDN til at forstå og bruge regular expression
+                Regex UserNameCheck = new Regex(@"^[a-z0-9_]+$"); //Jeg har brugt MSDN til at forstå og bruge regular expression
                 if (UserNameCheck.IsMatch(value))
                 {
                     this.userName = value;
                 }
                 else
                 {
-                    Console.WriteLine("fejl");
-                    Console.ReadKey();
+                    throw new NotAUserExeption(value);
                 }
             }
         }
@@ -96,7 +96,7 @@ namespace StregSystem
                 }
                 else
                 {
-                    //smid en fejl
+                    throw new ArgumentException("THis isn't a correct email :" + value);
                 }
             }
         }

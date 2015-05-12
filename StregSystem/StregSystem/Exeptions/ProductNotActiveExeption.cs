@@ -10,7 +10,7 @@ namespace StregSystem.Exeptions
     /// <summary>
     /// An Exeption there is throw when a user try to buy a product there isn't active.
     /// </summary>
-    class ProductNotActiveExeption : Exception
+    public class ProductNotActiveExeption : Exception
     {
         /// <summary>
         /// The products id

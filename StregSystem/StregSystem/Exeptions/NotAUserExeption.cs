@@ -9,7 +9,7 @@ namespace StregSystem.Exeptions
     /// <summary>
     /// An exeption there is throw when the text isn't a username on any user.
     /// </summary>
-    class NotAUserExeption : Exception
+    public class NotAUserExeption : Exception
     {
         /// <summary>
         /// The username that was't a user.
