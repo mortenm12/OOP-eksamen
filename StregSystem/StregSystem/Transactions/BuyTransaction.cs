@@ -15,14 +15,10 @@ namespace StregSystem.Transactions
         /// </summary>
         public Product TheProduct { get; set; }
 
-        /// <summary>
-        /// The price on the product at the time it was bought.
-        /// </summary>
-        public int Amount { get; set; }
-
+        
         public override string ToString()
         {
-            return "Product bought:" + TheProduct + " Price:" + Amount + "Dkk User:" + TheUser + " Date:" + Date + " TransactionID:" + TransactionId;
+            return "Product bought:" + TheProduct + " Price:" + (double)Amount/100 + "Dkk User:" + TheUser.UserName + " Date:" + Date + " TransactionID:" + TransactionId;
         }
 
         public override void Execute()
@@ -35,7 +31,6 @@ namespace StregSystem.Transactions
                 }
                 else
                 {
-                    
                     throw new InsufficientCreditsException(TheUser, TheProduct,"There isn't enought money on the account.");
                 }
             }
@@ -51,6 +46,10 @@ namespace StregSystem.Transactions
             Date = DateTime.Now;
         }
 
+        /// <summary>
+        /// Returns all the info in buy transaction, to use when it is save to a file.
+        /// </summary>
+        /// <returns>A comma seperated string.</returns>
         public override string FullString()
         {
             return "BT," + TransactionId + "," + TheUser.UserName + "," + TheProduct.ProductID + "," + Amount + "," + Date;

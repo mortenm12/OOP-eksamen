@@ -13,11 +13,26 @@ namespace StregSystem
 {
     class StregSystem
     {
-        
+        /// <summary>
+        /// The list of all the users.
+        /// </summary>
         public List<User> UserList = new List<User>();
+
+        /// <summary>
+        /// The list of all the products.
+        /// </summary>
         public List<Product> ProductList = new List<Product>();
+
+        /// <summary>
+        /// THe list of all the executed transactions.
+        /// </summary>
         public List<Transaction> ExecutedTransactions = new List<Transaction>();
 
+        /// <summary>
+        /// Makes a transaction for buy pruduct and calls execute on it.
+        /// </summary>
+        /// <param name="TheUser">The user that buóught the pruduct.</param>
+        /// <param name="TheProduct"> the product the user bought.</param>
         public void BuyProduct(User TheUser, Product TheProduct)
         {
             
@@ -31,6 +46,11 @@ namespace StregSystem
            ExecuteTransaction(productbuy);
         }
 
+        /// <summary>
+        /// Makes a transaction for adding credits.
+        /// </summary>
+        /// <param name="user">The user thats should have the credits.</param>
+        /// <param name="amount">The amount of credits the user must get in øre.</param>
         public void AddCreditsToAccount(User user, int amount)
         {
             InsertCashTransaction InsertCash = new InsertCashTransaction()
@@ -41,6 +61,10 @@ namespace StregSystem
             ExecuteTransaction(InsertCash);
         }
 
+        /// <summary>
+        /// Mekes sure to execute the transaction and it is done correctly it is wrote to the log.
+        /// </summary>
+        /// <param name="transaction">The transaction thats wants executed.</param>
         public void ExecuteTransaction(Transaction transaction)
         {
             System.IO.StreamWriter file = new StreamWriter("..\\..\\TransactionsLog.txt",true); //Læst om skrivning til filer på MSDN
@@ -63,6 +87,11 @@ namespace StregSystem
             }
         }
 
+        /// <summary>
+        /// Find and returns a pruduct base on its id.
+        /// </summary>
+        /// <param name="productId">the id that should parse to at product.</param>
+        /// <returns>returns a product based on its id.</returns>
         public Product GetProduct(uint productId)
         {
             if (ProductList.Exists(x => x.ProductID == productId))
@@ -76,6 +105,11 @@ namespace StregSystem
             }
         }
 
+        /// <summary>
+        /// Find and returns a user, based on it's username.
+        /// </summary>
+        /// <param name="userName">The username ther user should be finded on.</param>
+        /// <returns>returns a user.</returns>
         public User GetUser(string userName)
         {
             if (UserList.Exists(x => x.UserName == userName))
@@ -86,17 +120,30 @@ namespace StregSystem
             }
         }
 
+        /// <summary>
+        /// Find and returns a list on all the transaction that could be found on the user, in order of the newest.
+        /// </summary>
+        /// <param name="user">The user the transaction is seached for.</param>
+        /// <param name="count">the numbers of transaction that should be returned.</param>
+        /// <returns></returns>
         public List<Transaction> GetTransactionList(User user, int count)
         {
             List<Transaction> UserTransactionList = ExecutedTransactions.FindAll(x => x.TheUser == user).ToList();
             return UserTransactionList.OrderByDescending(x => x.Date).Take(count).ToList();
         }
 
+        /// <summary>
+        /// Find and returns all the active pruducts.
+        /// </summary>
+        /// <returns></returns>
         public List<Product> GetActiveProducts()
         {
             return ProductList.FindAll(x => x.Active == true).ToList();
         }
 
+        /// <summary>
+        /// Reads a file and saves it to the productlist.
+        /// </summary>
         public void FillProductList()
         {
             System.IO.StreamReader file = new StreamReader("..\\..\\products.csv", System.Text.Encoding.Default);  // læst om læsning af filer på MSDN, og for at få æøå ind brugte jeg eksemplet fra http://www.eksperten.dk/spm/874431
@@ -135,6 +182,9 @@ namespace StregSystem
             ID.ProductId = ProductList[ProductList.Count - 1].ProductID;
         }
 
+        /// <summary>
+        /// Reads a file and fill out the userlist.
+        /// </summary>
         public void FillUserList()
         {
             System.IO.StreamReader file = new StreamReader("..\\..\\UserList.txt");
@@ -159,6 +209,9 @@ namespace StregSystem
             ID.UserId = UserList[UserList.Count - 1].Id;
         }
 
+        /// <summary>
+        /// Reads a file and fill out the transaction list.
+        /// </summary>
         public void FillTransactionsList()
         {
             System.IO.StreamReader file = new StreamReader("..\\..\\TransactionsLog.txt");

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace StregSystem
 {
+    /// <summary>
+    /// A static class that holds all the information about all the Id's.
+    /// </summary>
     static class ID
     {
         /// <summary>
@@ -44,6 +47,10 @@ namespace StregSystem
             return ProductId;
         }
 
+        /// <summary>
+        /// Returns the next transaction id.
+        /// </summary>
+        /// <returns></returns>
         public static uint NextTransactionId()
         {
             TransactionId++;

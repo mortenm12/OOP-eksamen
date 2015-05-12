@@ -8,11 +8,22 @@ using StregSystem.Transactions;
 
 namespace StregSystem
 {
-    class StregsystemCommandParser : IStregsystem
+    class StregsystemCommandParser
     {
+        /// <summary>
+        /// THe stregsystem that is used.
+        /// </summary>
         StregSystem stregSystem { get; set; }
+
+        /// <summary>
+        /// The User interface where all the info is gonna get showed.
+        /// </summary>
         IStregsystemUI CLI { get; set; }
 
+        /// <summary>
+        /// The big black box where all the data is going in, and some random command is gonna get running :D
+        /// </summary>
+        /// <param name="command">That one line that makes all the magic.</param>
         public void CommandParser(string command)
         {
             
@@ -76,6 +87,11 @@ namespace StregSystem
 
         }
 
+        /// <summary>
+        /// THe construtor that takes at streg system and a User interface.
+        /// </summary>
+        /// <param name="CLI"> The User Interface.</param>
+        /// <param name="stregSystem">The Streg system.</param>
         public StregsystemCommandParser(StregsystemCLI CLI, StregSystem stregSystem)
         {
             this.CLI = CLI;

@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace StregSystem.Exeptions
 {
+    /// <summary>
+    /// An Exeption there is throw when the text isn't valid.
+    /// </summary>
     class NotValidTextExeption : Exception
     {
+        /// <summary>
+        /// The text that was't valid.
+        /// </summary>
         public string Text { get; set; }
 
         public NotValidTextExeption()

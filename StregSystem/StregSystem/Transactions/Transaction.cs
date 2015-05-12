@@ -8,8 +8,14 @@ namespace StregSystem.Transactions
 {
     abstract class Transaction
     {
+        /// <summary>
+        /// The Id of the transaction.
+        /// </summary>
         public uint TransactionId;
 
+        /// <summary>
+        /// The user on the transaction
+        /// </summary>
         private User theUser { get; set; }
         public User TheUser
         {
@@ -26,6 +32,9 @@ namespace StregSystem.Transactions
             }
         }
 
+        /// <summary>
+        /// The date of the transaction.
+        /// </summary>
         private DateTime date { get; set; }
         public DateTime Date 
         {
@@ -42,7 +51,11 @@ namespace StregSystem.Transactions
             } 
         }
 
+        /// <summary>
+        /// The amount the user must pay for the product.
+        /// </summary>
         public int Amount { get; set; }
+
 
         public abstract void Execute();
 

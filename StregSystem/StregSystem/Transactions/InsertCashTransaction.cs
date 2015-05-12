@@ -11,7 +11,7 @@ namespace StregSystem.Transactions
     {
         public override string ToString()
         {
-            return "Insert cash: " + Amount +"Dkk"+ " " + TheUser + " Date:" + Date +" ID:"+ TransactionId;
+            return "Insert cash: " + (double)Amount/100 +" Dkk User:" + TheUser.UserName + " Date:" + Date +" ID:"+ TransactionId;
         }
 
         public override void Execute()
@@ -25,6 +25,10 @@ namespace StregSystem.Transactions
             Date = DateTime.Now;
         }
 
+        /// <summary>
+        /// Returns all the info in insert cash transaction, to use when it is save to a file.
+        /// </summary>
+        /// <returns>A comma seperated string.</returns>
         public override string FullString()
         {
             return "IC," + TransactionId + "," + TheUser.UserName + "," + Amount + "," + Date;

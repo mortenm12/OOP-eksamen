@@ -52,6 +52,10 @@ namespace StregSystem.Products
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id">The product id</param>
         public Product(uint id)
         {
             ProductID = id;

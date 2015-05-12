@@ -43,7 +43,6 @@
   <ItemGroup>
     <Compile Include="Exeptions\NotAUserExeption.cs" />
     <Compile Include="Exeptions\NotValidTextExeption.cs" />
-    <Compile Include="IStregsystem.cs" />
     <Compile Include="IStregsystemUI.cs" />
     <Compile Include="StregsystemCLI.cs" />
     <Compile Include="StregsystemCommandParser.cs" />
